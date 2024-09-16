@@ -1,0 +1,47 @@
+﻿@model List<ZZZZRegistroArticulos.Models.Articulo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de articulos</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="Articulo_Detalle" asp-controller="Home" asp-route-IdArticulo="0">Crear Nuevo</a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del articulo</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Lote</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Descripcion</td>
+                        <td>@item.Precio</td>
+                        <td>@item.Lote</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm " asp-action="Articulo_Detalle" asp-controller="Home" asp-route-IdArticulo="@item.IdArticulo"> Editar</a>
+                            <a class="btn btn-danger btn-sm " asp-action="Eliminar" asp-controller="Home" asp-route-IdArticulo="@item.IdArticulo"> Eliminar</a>
+                        </td>
+                    </tr>
+
+
+
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
